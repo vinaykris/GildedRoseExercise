@@ -29,7 +29,7 @@ public class GildedRoseTest {
     }
 	
 	@Test
-    public void should_decrease_quality_twice__when_sellin_passed_for_general_items() {
+    public void should_decrease_quality_twice_when_sellin_passed_for_general_items() {
         Item[] items = new Item[] { new Item("foo", 0, 4) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -58,6 +58,14 @@ public class GildedRoseTest {
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
+    }
+	
+	@Test
+    public void should_increase_quality_by_two_when_sellin_is_passed_for_AgedBrie_items() {
+        Item[] items = new Item[] { new Item("Aged Brie", 0, 4) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(6, app.items[0].quality);
     }
 	
 	@Test
@@ -117,8 +125,8 @@ public class GildedRoseTest {
     }
 	
 	@Test
-    public void should_increase_quality_by_two_when_sellin_is_0_for_Backstage_items() {
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 0, 4) };
+    public void should_reduce_quality_to_zero_when_sellin_is_0_for_Backstage_items() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert",0, 4) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
